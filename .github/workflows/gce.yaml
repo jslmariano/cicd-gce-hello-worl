@@ -48,7 +48,9 @@ jobs:
 
       # TEST STEPS
     - name: Check running directories
-      run: ls -al
+      run: |-
+        pwd
+        ls -al
 
     - name: Build the docker-compose stack
       run: |-
