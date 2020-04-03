@@ -13,3 +13,5 @@
 FROM ubuntu:latest
 
 RUN echo "Hello world"
+
+EXPOSE 80
