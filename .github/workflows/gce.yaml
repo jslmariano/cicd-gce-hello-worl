@@ -47,6 +47,9 @@ jobs:
         gcloud --quiet auth configure-docker
 
       # TEST STEPS
+    - name: Check running directories
+      run: ls -al
+
     - name: Build the docker-compose stack
       run: |-
         docker-compose -f docker/docker-compose.yml up
