@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: ./web
+    expose:
+      - "8000"
+    # links:
+    #   - postgres:postgres
+    #   - redis:redis
+    volumes:
+      - ./web:/usr/src/app
+    env_file: .env
+    environment:
+      DEBUG: 'true'
+    command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000 --reload
+    # command: python manage.py runserver 0.0.0.0:8000
+
+
+volumes:
+  web-django:
