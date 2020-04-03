@@ -49,7 +49,7 @@ jobs:
       # TEST STEPS
     - name: Build the docker-compose stack
       run: |-
-        docker-compose up -d -f docker/docker-compose.yml
+        docker-compose -f docker/docker-compose.yml up
 
     - name: Sleep
       uses: jakejarvis/wait-action@master
