@@ -54,7 +54,7 @@ jobs:
 
     - name: Build the docker-compose stack
       run: |-
-        docker-compose -f docker/docker-compose.yml up
+        docker-compose -d -f docker/docker-compose.yml up
 
     - name: Sleep
       uses: jakejarvis/wait-action@master
