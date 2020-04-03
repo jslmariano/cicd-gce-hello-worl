@@ -51,6 +51,7 @@ jobs:
       run: |-
         pwd
         ls -al
+        docker-compose --help
 
     - name: Build the docker-compose stack
       run: |-
