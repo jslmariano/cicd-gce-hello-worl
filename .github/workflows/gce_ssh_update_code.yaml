@@ -64,7 +64,7 @@ jobs:
           ls -al &&
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           sudo rm -rf .git/index.lock &&
-          sudo git reset --hard HEAD &&
+          git restore -s@ -SW  -- aDirectory &&
           sudo git fetch && git checkout ${GITHUB_REF##*/} &&
           sudo git pull https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${GITHUB_REF##*/} &&
           sudo source ./venv/bin/activate &&
