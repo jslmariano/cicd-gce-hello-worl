@@ -1,4 +1,0 @@
-FROM tutum/nginx
-
-EXPOSE 80
-EXPOSE 443
