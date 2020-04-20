@@ -100,4 +100,5 @@ jobs:
     - name: The job has failed
       if: failure()
       run: |-
+        gcloud compute firewall-rules update josel-staging-allow-github --source-ranges $BASTION_IP
         gcloud compute firewall-rules update josel-staging-allow-github --disabled
