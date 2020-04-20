@@ -135,6 +135,7 @@ jobs:
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           cd /opt/fieldman/osa/briar-osa/ &&
           sed -i 's/daemon=False/daemon=True/g' app/app.py &&
+          cat app/app.py | grep 'daemon=' &&
           sudo ./venv/bin/python app/app.py &&
           ls -al
       run: |-
