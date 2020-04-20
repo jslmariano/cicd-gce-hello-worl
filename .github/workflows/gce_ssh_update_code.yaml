@@ -90,6 +90,7 @@ jobs:
           deactivate &&
           cd flask/ &&
           python3.7 -m venv venv &&
+          sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           source ./venv/bin/activate &&
           pip install --upgrade pip &&
           pip install -r requirements.txt &&
