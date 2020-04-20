@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Build and Deploy to Google Compute Engine
+name: SSH and Update to Google Compute Engine
 
 on:
   push:
@@ -26,8 +26,8 @@ env:
   GCE_INSTANCE_ZONE: asia-east1-b    # TODO: update to instance zone
 
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+  setup-ssh-update-deploy:
+    name: Setup, SSH, Update, and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -59,8 +59,9 @@ jobs:
         token: ${{ secrets.NAVAGISJOSEL_TOKEN }}
         s_command: |-
           ls -al &&
-          sudo cd /opt/fieldman/osa/briar-osa &&
           sudo su &&
+          cd /opt/fieldman/osa/briar-osa &&
+          ls -al &&
           sudo git fetch && git checkout ${GITHUB_REF##*/} &&
           sudo git pull https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${GITHUB_REF##*/} &&
           sudo source ./venv/bin/activate &&
