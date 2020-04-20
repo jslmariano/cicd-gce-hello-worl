@@ -65,7 +65,8 @@ jobs:
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           sudo rm -rf .git/index.lock &&
           sudo git reset --hard HEAD &&
-          echo "Updating to branch ${GITHUB_REF##*/}" &&
+          echo ${GITHUB_REF##*/} &&
+          echo $token &&
           sudo git fetch https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${GITHUB_REF##*/} &&
           sudo git checkout ${GITHUB_REF##*/} &&
           sudo git pull https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${GITHUB_REF##*/} &&
