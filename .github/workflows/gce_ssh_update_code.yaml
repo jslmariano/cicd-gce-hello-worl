@@ -29,6 +29,7 @@ jobs:
   setup-ssh-update-deploy:
     name: Setup, SSH, Update, and Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 3
 
     steps:
 
