@@ -66,7 +66,6 @@ jobs:
     # SSH to machinge
     - name: Update machine from repository
       env:
-        token: '40ca0047e2b092bfc0f7d85c2022449775c6e399'
         s_command: |-
           ls -al &&
           sudo su &&
@@ -76,10 +75,10 @@ jobs:
           sudo rm -rf .git/index.lock &&
           sudo git reset --hard HEAD &&
           echo ${{ steps.extract_branch.outputs.branch }} &&
-          echo $token &&
-          sudo git fetch https://navagisjosel:40ca0047e2b092bfc0f7d85c2022449775c6e399@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          echo ${{ secrets.NAVAGISJOSEL_TOKEN }} &&
+          sudo git fetch https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
-          sudo git pull https://navagisjosel:40ca0047e2b092bfc0f7d85c2022449775c6e399@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git pull https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo source ./venv/bin/activate &&
           sudo pip install --upgrade pip &&
           sudo pip install -r requirements.txt &&
