@@ -50,8 +50,10 @@ jobs:
     - name: Allowing github ip to GCP firewall
       run: |-
         export TEMP_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
-        gcloud compute firewall-rules describe josel-staging-allow-github --format="table(sourceRanges.list())"
-        dig +short myip.opendns.com @resolver1.opendns.com
+        export SOURCES=$(gcloud compute firewall-rules describe josel-staging-allow-github --format="table(sourceRanges.list())")
+        echo $TEMP_IP
+        echo $SOURCES
+        gcloud compute firewall-rules update josel-staging-allow-github --source-ranges 34.80.233.230,$TEMP_IP
         pwd
         ls -al
         docker-compose --help
