@@ -132,9 +132,9 @@ jobs:
       env:
         s_command: |-
           ls -al &&
-          sudo -u root  &&
-          sudo /usr/bin/screen -dmS app /opt/fieldman/osa/briar-osa/venv/bin/python /opt/fieldman/osa/briar-osa/app/app.py &&
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
+          sed -i 's/daemon=True/daemon=False/g' app/app.py &&
+          sudo ./venv/bin/python app/app.py &&
           pgrep -u root python >/dev/null && echo "Success" exit 0 || echo "[ERROR] Error! No running worker process" exit 1 &&
           ls -al
       run: |-
