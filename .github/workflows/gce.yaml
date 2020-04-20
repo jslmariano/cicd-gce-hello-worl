@@ -95,3 +95,9 @@ jobs:
         gcloud compute instances update-container "$GCE_INSTANCE" \
           --zone "$GCE_INSTANCE_ZONE" \
           --container-image "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
+
+    # Failure handler
+    - name: The job has failed
+      if: failure()
+      run: |-
+        gcloud compute firewall-rules update josel-staging-allow-github --disabled
