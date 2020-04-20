@@ -97,8 +97,8 @@ jobs:
           --container-image "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
 
     # Failure handler
-    - name: The job has failed
-      if: failure()
+    - name: The custom job cleanup always
+      if: always()
       run: |-
         gcloud compute firewall-rules update josel-staging-allow-github --source-ranges $BASTION_IP
         gcloud compute firewall-rules update josel-staging-allow-github --disabled
