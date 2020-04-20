@@ -66,7 +66,7 @@ jobs:
     # SSH to machinge
     - name: Update machine from repository
       env:
-        token: ${{ secrets.NAVAGISJOSEL_TOKEN }}
+        token: 'dcc01e6705c0967af0ba8ab52223c8956086d51c'
         s_command: |-
           ls -al &&
           sudo su &&
@@ -76,7 +76,7 @@ jobs:
           sudo rm -rf .git/index.lock &&
           sudo git reset --hard HEAD &&
           echo ${{ steps.extract_branch.outputs.branch }} &&
-          echo ${{ secrets.NAVAGISJOSEL_TOKEN }} &&
+          echo $oken &&
           sudo git fetch https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
           sudo git pull https://navagisjosel:$token@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
