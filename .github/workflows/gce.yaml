@@ -21,6 +21,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCE_PROJECT }}
+  BASTION_IP: ${{ secrets.FIELDMAN_TEST_BASTION_IP }}
   GCE_INSTANCE: josel-co-vm          # TODO: update to instance name
   GCE_INSTANCE_ZONE: asia-east1-b    # TODO: update to instance zone
 
@@ -53,7 +54,8 @@ jobs:
         export SOURCES=$(gcloud compute firewall-rules describe josel-staging-allow-github --format="table(sourceRanges.list())")
         echo $TEMP_IP
         echo $SOURCES
-        gcloud compute firewall-rules update josel-staging-allow-github --source-ranges 34.80.233.230,$TEMP_IP
+        gcloud compute firewall-rules update josel-staging-allow-github --source-ranges $BASTION_IP,$TEMP_IP
+        gcloud compute firewall-rules update josel-staging-allow-github --no-disabled
         pwd
         ls -al
         docker-compose --help
