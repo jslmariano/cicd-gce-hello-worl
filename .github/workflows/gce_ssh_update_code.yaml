@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Google Compute Engine SSH and Update from github old-school style
+name: GCE SSH and Update from github old-school style
 
 on:
   push:
@@ -84,6 +84,7 @@ jobs:
           sudo git fetch https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
           sudo git pull https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git reset --hard origin/${{ steps.extract_branch.outputs.branch }} &&
           sudo git branch &&
           sudo git status
       run: |-
