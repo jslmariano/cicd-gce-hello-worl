@@ -35,6 +35,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    # Update GCP firewall
+    - name: Preview current branch
+      run: |-
+        echo "current branch:  ${{ steps.extract_branch.outputs.branch }}"
+        echo running on branch ${GITHUB_REF##
+
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
