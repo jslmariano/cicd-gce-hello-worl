@@ -47,6 +47,16 @@ jobs:
         gcloud --quiet auth configure-docker
 
       # TEST STEPS
+    - name: Allowing github ip to GCP firewall
+      run: |-
+        export TEMP_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        gcloud compute firewall-rules describe josel-staging-allow-github --format="table(sourceRanges.list())"
+        dig +short myip.opendns.com @resolver1.opendns.com
+        pwd
+        ls -al
+        docker-compose --help
+
+      # TEST STEPS
     - name: Check running directories
       run: |-
         dig +short myip.opendns.com @resolver1.opendns.com
