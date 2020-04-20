@@ -79,9 +79,9 @@ jobs:
           sudo git fetch https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
           sudo git pull https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
-          sudo source ./venv/bin/activate &&
-          sudo pip install --upgrade pip &&
-          sudo pip install -r requirements.txt &&
+          source ./venv/bin/activate &&
+          pip install --upgrade pip &&
+          pip install -r requirements.txt &&
           ls -al
       run: |-
         echo $s_command
