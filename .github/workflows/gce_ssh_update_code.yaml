@@ -66,7 +66,7 @@ jobs:
     # SSH to machinge
     - name: Update machine from repository
       env:
-        token: 'dcc01e6705c0967af0ba8ab52223c8956086d51c'
+        token: '40ca0047e2b092bfc0f7d85c2022449775c6e399'
         s_command: |-
           ls -al &&
           sudo su &&
@@ -77,9 +77,9 @@ jobs:
           sudo git reset --hard HEAD &&
           echo ${{ steps.extract_branch.outputs.branch }} &&
           echo $token &&
-          sudo git fetch https://navagisjosel:dcc01e6705c0967af0ba8ab52223c8956086d51c@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git fetch https://navagisjosel:40ca0047e2b092bfc0f7d85c2022449775c6e399@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
-          sudo git pull https://navagisjosel:dcc01e6705c0967af0ba8ab52223c8956086d51c@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git pull https://navagisjosel:40ca0047e2b092bfc0f7d85c2022449775c6e399@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
           sudo source ./venv/bin/activate &&
           sudo pip install --upgrade pip &&
           sudo pip install -r requirements.txt &&
