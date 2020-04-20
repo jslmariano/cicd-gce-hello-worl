@@ -81,9 +81,9 @@ jobs:
           sudo git reset --hard HEAD &&
           echo ${{ steps.extract_branch.outputs.branch }} &&
           echo ${{ secrets.NAVAGISJOSEL_TOKEN }} &&
-          sudo git fetch https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git fetch https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git &&
           sudo git checkout ${{ steps.extract_branch.outputs.branch }} &&
-          sudo git pull https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git ${{ steps.extract_branch.outputs.branch }} &&
+          sudo git pull https://navagisjosel:${{ secrets.NAVAGISJOSEL_TOKEN }}@github.com/Navagis-LLC/briar-osa.git &&
           sudo git reset --hard origin/${{ steps.extract_branch.outputs.branch }} &&
           sudo git branch &&
           sudo git status
@@ -102,6 +102,7 @@ jobs:
           ls -al &&
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           source ./venv/bin/activate &&
+          cat requirements.txt &&
           pip install --upgrade pip &&
           pip install -r requirements.txt &&
           ls -al
@@ -120,6 +121,7 @@ jobs:
           ls -al &&
           sudo chmod 777 -R /opt/fieldman/osa/briar-osa/* &&
           source ./venv/bin/activate &&
+          cat requirements.txt &&
           pip install --upgrade pip &&
           pip install -r requirements.txt &&
           ls -al
